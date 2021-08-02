@@ -1,2 +1,11 @@
 *.class
 *.log
+*.tasty
+.metals/
+.vscode/
+.bloop/
+.bsp/
+target/
+project/
+data/
+platShot/
