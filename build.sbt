@@ -24,7 +24,3 @@ lazy val root = project
     libraryDependencies ++= javaFXModules,
     libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R24"
   )
-assemblyMergeStrategy in assembly := {
- case PathList("META-INF", xs @ _*) => MergeStrategy.discard
- case x => MergeStrategy.first
-}
