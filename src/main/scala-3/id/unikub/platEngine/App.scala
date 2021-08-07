@@ -11,7 +11,6 @@ import scalafx.scene.layout.AnchorPane
 import scalafx.scene.control.Button
 import scalafx.stage.Stage
 
-
 class App extends JFXApp3:
   override def start():Unit=
     stage = new JFXApp3.PrimaryStage:

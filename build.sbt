@@ -1,4 +1,5 @@
 val scala3Version = "3.0.0"
+
 lazy val javaFXModules = {
       // Determine OS version of JavaFX binaries
       lazy val osName = System.getProperty("os.name") match {
@@ -12,15 +13,19 @@ lazy val javaFXModules = {
       Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
         .map( m=> "org.openjfx" % s"javafx-$m" % "16" classifier osName)
     }
+lazy val scalaFXModule = {
+  "org.scalafx" %% "scalafx" % "16.0.0-R24"
+}
 lazy val root = project
   .in(file("."))
+  .enablePlugins(NativeImagePlugin)
   .settings(
     name := "platShot",
     version := "0.1",
 
     scalaVersion := scala3Version,
 
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test",
     libraryDependencies ++= javaFXModules,
-    libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R24"
+    libraryDependencies += scalaFXModule,
+    Compile / mainClass := Some("id.unikub.platShot.Main")
   )
