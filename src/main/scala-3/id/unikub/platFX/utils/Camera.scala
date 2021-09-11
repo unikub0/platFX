@@ -1,23 +1,26 @@
-package id.unikub.platEngine
+package id.unikub.platFX.utils
 
-import id.unikub.platEngine.transform.{Transform, Vector2}
+import id.unikub.platFX.utils.transform.{Transform, Vector2}
 import scalafx.scene.paint.Color
 import scalafx.scene.canvas.Canvas
-import id.unikub.platEngine.objects.Renderable
+import id.unikub.platFX.utils.gameObjects.Renderable
+import id.unikub.platFX.utils.Terrain
+import id.unikub.platFX.core.PlatRunnable
+import id.unikub.platFX.core.PlatRunner
 
-class Camera(transform :Transform, terrain :Terrain, var dim :Vector2) extends Canvas:
+class Camera(transform :Transform, terrain :Terrain, var dim :Vector2) extends Canvas, PlatRunnable:
   width = dim.x
   height = dim.y
-  var i =0
+
   private val gc = graphicsContext2D
-  gc.beginPath()
-  def render :Unit =
+  
+  override def awake = gc.beginPath()
+  override def loop =
     gc.clearRect(0, 0, dim.x, dim.y)
-    //
+
+    //Background of Terrain
     gc.fill = (terrain.backgroundColor)
     gc.fillRect(0, 0, dim.x, dim.y)
-    gc.fill = Color.Red
-    gc.fillRect(0, 0, 30, 30)
     /*
     for
       i <- terrain.children
@@ -31,3 +34,6 @@ class Camera(transform :Transform, terrain :Terrain, var dim :Vector2) extends C
         dim.y-i.asInstanceOf[Renderable].sprites.height.value*i.transform.scl.y
       )
       */
+  override def destruct = {}
+
+  PlatRunner(this).start

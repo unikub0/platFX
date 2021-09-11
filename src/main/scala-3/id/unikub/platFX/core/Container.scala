@@ -1,6 +1,6 @@
-package id.unikub.platEngine
+package id.unikub.platFX.core
 
-class Container(private val _game :GameRunner) extends Time, Runnable:
+/*class Container(private val _game :GameRunner) extends Time, Runnable:
   var running = false
   val UPDATE_RATE = 1.0/180
   private var frames, fps = 0
@@ -40,3 +40,4 @@ class Container(private val _game :GameRunner) extends Time, Runnable:
         Thread.sleep(1)
       catch
         case ex: InterruptedException => ex.printStackTrace
+        */

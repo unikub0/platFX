@@ -1,4 +1,4 @@
-package id.unikub.platEngine
+package id.unikub.platFX.utils
 
 object Time:
   private var _deltaTime, _time = 0.0
@@ -12,6 +12,7 @@ object Time:
   
   def deltaTime = _deltaTime
   def time = _time
+
 class Time:
   protected def newTime = Time._newTime
   protected def newTime_=(t :Double) = Time._newTime = t

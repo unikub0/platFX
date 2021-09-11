@@ -6,6 +6,7 @@
 .bloop/
 .bsp/
 target/
-project/
+project/src/
+project/project
 data/
 platShot/
