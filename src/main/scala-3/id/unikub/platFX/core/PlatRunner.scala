@@ -6,8 +6,8 @@ import id.unikub.platFX.utils.Time
 import id.unikub.platFX.core.PlatRunnable
 import id.unikub.platFX.utils.Util
 
-class PlatRunner(runnable :PlatRunnable) extends Thread:
-  var running = false
+class PlatRunner(runnable :PlatRunnable) extends Thread("PlatFX Game Runner"):
+  protected var running = false
   
   override def run =
     running = true
@@ -23,6 +23,7 @@ class PlatRunner(runnable :PlatRunnable) extends Thread:
       while unprocessedTime >= Util.UPDATE_RATE do
         unprocessedTime -= Util.UPDATE_RATE
         runnable.loop
+        println("dari runner")
   
   def destroy =
     running = false
