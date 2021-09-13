@@ -12,6 +12,7 @@ import scala.collection.mutable.ListBuffer
 import id.unikub.platFX.utils.Time
 import id.unikub.platFX.core.SceneAtributes
 import id.unikub.platFX.core.renderer.PlatRenderer
+import id.unikub.platFX.core.PlatRunner
 
 class PlatApp extends JFXApp3:
 
@@ -24,6 +25,6 @@ class PlatApp extends JFXApp3:
     stage = new JFXApp3.PrimaryStage:
       title = "platFX"
       icons += Image(getClass.getResourceAsStream("/assets/platShot/icon/plat-Shot_icon.png"))
-      onCloseRequest = _ -> {Platform.exit(); System.exit(0)}
+      onCloseRequest = _ -> {PlatRunner.runner().map(_.destroy); System.exit(0)}
       scene = SceneAtributes.scene
       _obj.map(SceneAtributes.scene.getChildren += _)

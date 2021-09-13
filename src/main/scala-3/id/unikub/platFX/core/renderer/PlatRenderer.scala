@@ -3,7 +3,7 @@ package id.unikub.platFX.core.renderer
 import id.unikub.platFX.utils.{Util,Time,Camera}
 import scala.collection.mutable.ListBuffer
 
-object PlatRenderer extends Thread:
+object PlatRenderer extends Thread("PlatFX Render Engine"):
   var running = false
   var fps = 0
   val renderBuffer :ListBuffer[Camera]= ListBuffer()
@@ -21,10 +21,15 @@ object PlatRenderer extends Thread:
       unprocessedTime += Time.deltaTime
       frameTime += Time.deltaTime
 
-
       while unprocessedTime >= Util.UPDATE_RATE do
         unprocessedTime -= Util.UPDATE_RATE
         canRender = true
+
+        if frameTime >= 1 then
+          frameTime = 0
+          fps = frames
+          frames = 0
+          println(s"FPS : ${fps}")
 
       if canRender then
         frames +=1
